@@ -1,6 +1,6 @@
-cask 'mplus-powerline' do
+cask 'mplus-mn-nerd-font-complete' do
   version '1.0'
-  sha256 'bd67022eb2a64e0bbd487aecc077460d23dfce5d2822c54bf2f62e71a192b4ac'
+  sha256 'f325c9690ee51f16685591da576167d0398e6f74217ab6634e31e4a72471618a'
 
   url "https://github.com/oschrenk/mplus-mn-nerd-font-complete/files/6175868/mplus-mn-nerd-font-complete.zip"
 
