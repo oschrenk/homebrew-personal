@@ -1,11 +1,11 @@
 class McpServerMacosUse < Formula
   desc "AI agent that controls macOS"
   homepage "https://github.com/mediar-ai/mcp-server-macos-use"
-  url "https://github.com/mediar-ai/mcp-server-macos-use.git",
-      revision: "24b4c9ff4a4fc3cf6828f05848b32e84b603ae1d"
+  url "https://github.com/oschrenk/mcp-server-macos-use.git",
+      revision: "504beaecd09c7e7018d41c7a044ea7d36a86a43b"
   license "BSL-1.1"
   version "1"
-  head "https://github.com/mediar-ai/mcp-server-macos-use.git", branch: "main"
+  head "https://github.com/oschrenk/mcp-server-macos-use.git", branch: "main"
 
 
   livecheck do
