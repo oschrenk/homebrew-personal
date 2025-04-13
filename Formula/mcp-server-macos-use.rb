@@ -32,5 +32,7 @@ class McpServerMacosUse < Formula
   end
 
   test do
+    # currently no good way of testing
+    # no call that exits immediately
   end
 end
