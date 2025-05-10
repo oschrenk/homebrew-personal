@@ -10,7 +10,7 @@ class Squawk < Formula
       sha256 "f98ba67e61c7863016d5bec49b47448f741dbfbd82d36e950d446fd7c734cac4"
 
       def install
-        bin.install "squawk-darwin-arm64 " => "squawk"
+        bin.install "squawk-darwin-arm64" => "squawk"
       end
     end
   end
