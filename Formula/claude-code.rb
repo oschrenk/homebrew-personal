@@ -3,10 +3,10 @@ require "language/node"
 class ClaudeCode < Formula
   desc "Command line interface for Claude AI by Anthropic"
 
-  version "1.0.24"
+  version "1.0.35"
   homepage "https://www.anthropic.com"
   url "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-#{version}.tgz"
-  sha256 "5573ebbc0ef233bb69678c006ec32d4cf2f94d1324365aa9ea29cb3e28a123b2"
+  sha256 "1a64459da84f190271da2401b26a1fa280de10ebe4ff64d211056f3ba9ab9a87"
 
   license "Anthropic PBC"
 
