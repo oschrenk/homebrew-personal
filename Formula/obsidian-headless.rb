@@ -8,7 +8,8 @@ class ObsidianHeadless < Formula
   depends_on "node"
 
   def install
-    system "npm", "install", *std_npm_args
+    # ignore_scripts: false is needed to compile the better-sqlite3 native addon
+    system "npm", "install", *std_npm_args(ignore_scripts: false)
     bin.install_symlink libexec.glob("bin/*")
 
     # Wrapper script for the sync service
@@ -56,6 +57,6 @@ class ObsidianHeadless < Formula
   end
 
   test do
-    assert_match "obsidian-headless", shell_output("#{bin}/ob --help 2>&1", 1)
+    assert_match "Headless client for Obsidian", shell_output("#{bin}/ob --help")
   end
 end
