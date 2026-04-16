@@ -28,6 +28,6 @@ class Lightpanda < Formula
   end
 
   test do
-    assert_match "lightpanda", shell_output("#{bin}/lightpanda --help 2>&1", 1)
+    assert_match "nightly", shell_output("#{bin}/lightpanda version 2>&1")
   end
 end
