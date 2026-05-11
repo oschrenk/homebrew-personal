@@ -1,0 +1,37 @@
+class Pi < Formula
+  desc "AI coding agent CLI with read, bash, edit, write tools and session management"
+  homepage "https://github.com/earendil-works/pi"
+  license "MIT"
+  version "0.74.0"
+
+  on_macos do
+    on_arm do
+      url "https://github.com/earendil-works/pi/releases/download/v#{version}/pi-darwin-arm64.tar.gz"
+      sha256 "3063179823c6a985634312240c57015024316f7fe6661edd41f14c77d8b15e10"
+    end
+    on_intel do
+      url "https://github.com/earendil-works/pi/releases/download/v#{version}/pi-darwin-x64.tar.gz"
+      sha256 "fa65c98f2c651ec2f89fb1a8a3dc9b987947bc9b102361a2f178862abacc7560"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/earendil-works/pi/releases/download/v#{version}/pi-linux-arm64.tar.gz"
+      sha256 "261aa912878ca983c903d9c4a0408310dd8637b583085651d9b5ddb70c9df572"
+    end
+    on_intel do
+      url "https://github.com/earendil-works/pi/releases/download/v#{version}/pi-linux-x64.tar.gz"
+      sha256 "d67657a30d49c9faca80868d2a4bdba4dfcac04702893f45a6d14b249345eb8d"
+    end
+  end
+
+  def install
+    libexec.install Dir["*"]
+    bin.install_symlink libexec/"pi"
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/pi --version")
+  end
+end
