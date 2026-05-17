@@ -1,8 +1,19 @@
 class Lightpanda < Formula
   desc "Headless browser built for AI agents and automation"
   homepage "https://github.com/lightpanda-io/browser"
+  # Tracks the upstream rolling "nightly" release; version is the asset's updated_at date.
+  version "2026.05.17"
   license "AGPL-3.0-only"
-  version "nightly"
+
+  livecheck do
+    url "https://api.github.com/repos/lightpanda-io/browser/releases/tags/nightly"
+    strategy :json do |json|
+      asset = json["assets"]&.find { |a| a["name"] == "lightpanda-aarch64-macos" }
+      next if asset.nil?
+
+      Date.parse(asset["updated_at"]).strftime("%Y.%m.%d")
+    end
+  end
 
   head do
     url "https://github.com/lightpanda-io/browser.git", branch: "main"
