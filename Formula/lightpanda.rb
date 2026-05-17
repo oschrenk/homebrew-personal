@@ -12,7 +12,7 @@ class Lightpanda < Formula
   on_macos do
     on_arm do
       url "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
-      sha256 "a90d7adf2710f2a0e1db18448194a4104c24420973104dcabf1ca3807066a403"
+      sha256 "d6d4fcfffb697139e169364d478a26b3ecfc0defc03cc9bc4e7ffa6f7c346e22"
     end
   end
 
