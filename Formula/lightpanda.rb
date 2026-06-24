@@ -2,7 +2,7 @@ class Lightpanda < Formula
   desc "Headless browser built for AI agents and automation"
   homepage "https://github.com/lightpanda-io/browser"
   # Tracks the upstream rolling "nightly" release; version is the asset's updated_at date.
-  version "2026.05.17"
+  version "2026.06.24"
   license "AGPL-3.0-only"
 
   livecheck do
@@ -23,7 +23,7 @@ class Lightpanda < Formula
   on_macos do
     on_arm do
       url "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
-      sha256 "d6d4fcfffb697139e169364d478a26b3ecfc0defc03cc9bc4e7ffa6f7c346e22"
+      sha256 "a35fccb5526bc96a6c82b478e6324b0c779a33db40d36b801f9b1f429f990470"
     end
   end
 
