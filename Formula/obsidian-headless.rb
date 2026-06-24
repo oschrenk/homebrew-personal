@@ -1,16 +1,26 @@
 class ObsidianHeadless < Formula
   desc "Headless client for Obsidian services"
   homepage "https://obsidian.md"
-  url "https://registry.npmjs.org/obsidian-headless/-/obsidian-headless-0.0.8.tgz"
-  sha256 "f9f83ab6bebdffb9fbdca86527101be2e8cc3af1fae212f022dffa31e02236d5"
+  url "https://registry.npmjs.org/obsidian-headless/-/obsidian-headless-0.0.12.tgz"
+  sha256 "6d267fd57753120007e1ab70fcd3f1d0eb0fdae97bf13d5e6b8c69bbeef0fe7d"
   license :cannot_represent
 
-  depends_on "node"
+  # Pinned to node@22: better-sqlite3 does not compile against Node 26's V8
+  # (PropertyCallbackInfo::This() was removed) and its engines cap at Node 25.
+  depends_on "node@22"
 
   def install
+    # Build (and run) against the keg-only node@22 so the native addon's ABI matches.
+    ENV.prepend_path "PATH", formula_opt_bin("node@22")
+
     # ignore_scripts: false is needed to compile the better-sqlite3 native addon
     system "npm", "install", *std_npm_args(ignore_scripts: false)
-    bin.install_symlink libexec.glob("bin/*")
+
+    # node@22 is keg-only, so wrap each CLI to put it first on PATH at runtime;
+    # otherwise the addon (built for node@22) fails to load under another Node.
+    libexec.glob("bin/*").each do |f|
+      (bin/f.basename).write_env_script f, PATH: "#{formula_opt_bin("node@22")}:$PATH"
+    end
 
     # Wrapper script for the sync service
     (libexec/"obsidian-headless-sync").write <<~BASH
