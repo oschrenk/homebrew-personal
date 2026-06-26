@@ -13,8 +13,20 @@ class ObsidianHeadless < Formula
     # Build (and run) against the keg-only node@22 so the native addon's ABI matches.
     ENV.prepend_path "PATH", formula_opt_bin("node@22")
 
+    # Point node-gyp at node@22's bundled headers so it builds the better-sqlite3
+    # addon offline instead of downloading them from nodejs.org during configure.
+    ENV["npm_config_nodedir"] = formula_opt_prefix("node@22")
+
     # ignore_scripts: false is needed to compile the better-sqlite3 native addon
     system "npm", "install", *std_npm_args(ignore_scripts: false)
+
+    # btime bundles prebuilt addons for every platform; keep only the arm64
+    # macOS slice (our sole target) so foreign-arch ones don't ship and trip
+    # `brew audit`.
+    btime = libexec/"lib/node_modules/obsidian-headless/btime"
+    btime.glob("*").each do |d|
+      rm_r(d) if d.basename.to_s != "darwin-arm64"
+    end
 
     # node@22 is keg-only, so wrap each CLI to put it first on PATH at runtime;
     # otherwise the addon (built for node@22) fails to load under another Node.
