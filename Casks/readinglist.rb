@@ -7,7 +7,7 @@ cask "readinglist" do
   sha256 "db01b6dbb103b15664cb16188621ac62187d44fd2301676340ad6d52251bede0"
   url "https://github.com/marckohlbrugge/readinglist/releases/download/v#{version}/Reading-List-#{version}.dmg"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Reading List.app"
 end
