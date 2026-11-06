@@ -1,6 +1,6 @@
 cask "diffity" do
-  version "0.1.1"
-  sha256 "11eec0999842f94f18a94e9b21c70d14767fdcb3d74563a8c3f90801b9f30371"
+  version "0.2.0"
+  sha256 "71ba0610b99b3ca3746006a8452c83493486f7df2266bb3b25eec9cfb46ee50b"
 
   url "https://github.com/nilbuild/diffity/releases/download/v#{version}/Diffity_#{version}_universal.dmg"
   name "Diffity"
